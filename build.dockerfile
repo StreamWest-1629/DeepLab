@@ -37,7 +37,8 @@ RUN \
     # go install github.com/kahing/goofys@v${GOOFYS_VERSION}
     #
     # Install goofys from binary
-    wget https://github.com/kahing/goofys/releases/download/v${GOOFYS_VERSION}/goofys -P /usr/local/bin/
+    wget https://github.com/kahing/goofys/releases/download/v${GOOFYS_VERSION}/goofys -P /usr/local/bin/ && \
+    chmod +x /usr/local/bin/goofys
 
 RUN \
     # Install jupyter lab
