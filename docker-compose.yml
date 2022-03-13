@@ -1,4 +1,6 @@
 version: "3.0"
+
+
 services:
   check_version:
     build:
@@ -7,6 +9,19 @@ services:
     volumes:
       - .:/src
     command: /src/scripts/check_version.sh
+  deploy:
+    build:
+      context: .
+      dockerfile: build.dockerfile
+    volumes:
+      - .:/src
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      DEPLOY_STACKNAME: DeepLab
+      DEEPLAB_BUCKETNAME: deeplab-fileshareing
+    entrypoint: /src/scripts/deploy.sh
   start:
     build:
       context: .

@@ -6,7 +6,7 @@ Parameters:
 Resources:
   FileSystemBucket:
     Type: AWS::S3::Bucket
-    Propeties:
+    Properties:
       BucketName: !Ref BucketName
       PublicAccessBlockConfiguration:
         BlockPublicAcls: TRUE
