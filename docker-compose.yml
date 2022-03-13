@@ -1,4 +1,6 @@
 version: "3.0"
+
+
 services:
   check_version:
     build:
@@ -7,24 +9,45 @@ services:
     volumes:
       - .:/src
     command: /src/scripts/check_version.sh
-  init:
+  deploy:
     build:
       context: .
       dockerfile: build.dockerfile
     volumes:
       - .:/src
-    command: /src/scripts/init.sh
-  tidy:
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      DEPLOY_STACKNAME: DeepLab
+      DEEPLAB_BUCKETNAME: deeplab-fileshareing
+    entrypoint: /src/scripts/deploy.sh
+  start:
     build:
       context: .
       dockerfile: build.dockerfile
     volumes:
       - .:/src
-    command: /src/scripts/tidy.sh
-  build:
-    build:
-      context: .
-      dockerfile: build.dockerfile
-    volumes:
-      - .:/src
-    command: /src/scripts/build.sh
+      - ~/.aws:/root/.aws
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      DEEPLAB_BUCKETNAME: deeplab-fileshareing
+      GIT_CREDENTIALS: ${GIT_CREDENTIALS}
+      GIT_USERNAME: ${GIT_USERNAME}
+      GIT_USERMAIL: ${GIT_USERMAIL}
+    entrypoint: /src/scripts/start.sh
+    tmpfs:
+      - /root/.jupyter
+      - /dataset
+    privileged: true
+    ports:
+      - 5515:5515
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: ["gpu"]

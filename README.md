@@ -6,6 +6,17 @@
 | :-- | :-: | :-: |
 | [Infra and Libs][@infra_and_libs] | [Make Issue][improve@infra_and_libs] | [Make Issue][bugfix@infra_and_libs] |
 
+## git clone時にやること
+**`./after_cloning.sh`を実行してください．** jupyter labのPush時に必要です．
+
+## `docker compose up` 系デプロイコマンド
+
+| `docker compose up xxx` | 内容 |
+| :-: | :-- |
+| `check_version` | コンテナ内で使用中のモジュールのバージョン情報を確認する |
+| `deploy` | AWS上のリソースを追加・更新する |
+| `start` | Jupyter Labを実行する |
+
 ## テンプレートとして使用したらはじめにすること
 1. **readme.mdの修正，やらないと許さない**
     ```sh

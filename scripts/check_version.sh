@@ -1,2 +1,4 @@
 #!/bin/sh
-echo go version: $(go version)
+echo $(goofys --version)
+echo python packages...
+python3 -m pip list --format columns
