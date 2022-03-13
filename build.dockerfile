@@ -1,18 +1,21 @@
 FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
 
 ARG NODEJS_VERSION=14.x
-ARG GOLANG_VERSION=1.16.15
-ARG GOOFYS_VERSION=0.23.1
+ARG GOLANG_VERSION=1.15.8
+ARG GOOFYS_VERSION=0.24.0
 
 ENV DEBIAN_FRONTEND=nointeractive \
     TZ=Asia/Tokyo \
-    PATH=${PATH}:/usr/local/go/bin
+    PATH=${PATH}:/usr/local/go/bin \
+    GOPATH=/usr/local/go \
+    GO111MODULE=on
 
 RUN \
     # Install build modules
+    sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y \
-    build-essential git curl wget tar unzip python3 python3-pip s3fs \
+    build-essential git curl wget tar unzip python3 python3-pip s3fs fuse \
     dirmngr apt-transport-https lsb-release ca-certificates \
     zlib1g-dev libjpeg-dev graphviz && \
     #
@@ -23,14 +26,18 @@ RUN \
     #
     # Install nodejs
     curl -sL https://deb.nodesource.com/setup_${NODEJS_VERSION} | bash - && \
-    apt-get install -y nodejs
-# #
-# # Install golang
-# wget https://go.dev/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz && \
-# tar -C /usr/local -xzf go${GOLANG_VERSION}.linux-amd64.tar.gz && \
-# #
-# # Install goofys
-# go install github.com/kahing/goofys@v${GOOFYS_VERSION}
+    apt-get install -y nodejs && \
+    # #
+    # # Install golang
+    # wget https://go.dev/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz && \
+    # tar -C /usr/local -xzf go${GOLANG_VERSION}.linux-amd64.tar.gz && \
+    # #
+    # # Install goofys
+    # go get -d github.com/kahing/goofys@v${GOOFYS_VERSION} && \
+    # go install github.com/kahing/goofys@v${GOOFYS_VERSION}
+    #
+    # Install goofys from binary
+    wget https://github.com/kahing/goofys/releases/download/v${GOOFYS_VERSION}/goofys -P /usr/local/bin/
 
 RUN \
     # Install jupyter lab
