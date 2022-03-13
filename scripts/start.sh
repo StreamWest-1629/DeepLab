@@ -1,5 +1,6 @@
 #!/bin/sh
 
+cd /src
 goofys -f ${DEEPLAB_BUCKETNAME}:.jupyter/ /root/.jupyter/ &
 goofys -f ${DEEPLAB_BUCKETNAME}:dataset/ /dataset/ &
 python3 -m jupyter lab \
