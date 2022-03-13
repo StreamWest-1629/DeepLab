@@ -44,6 +44,7 @@ RUN \
     # Install jupyter lab
     python3 -m pip install \
     jupyterlab \
+    jupytext \
     jupyterlab-git \
     jupyterlab-lsp \
     jupyterlab_code_formatter \
