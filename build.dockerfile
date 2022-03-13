@@ -14,8 +14,9 @@ RUN \
     # Install build modules
     sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list && \
     apt-get update && \
+    # apt-get upgrade -y && \
     apt-get install -y \
-    build-essential git curl wget tar unzip python3 python3-pip s3fs fuse \
+    build-essential git curl wget tar unzip python3 python3-pip s3fs fuse-emulator-utils fuse \
     dirmngr apt-transport-https lsb-release ca-certificates \
     zlib1g-dev libjpeg-dev graphviz && \
     #

@@ -28,4 +28,15 @@ services:
       dockerfile: build.dockerfile
     volumes:
       - .:/src
+      - ~/.aws:/root/.aws
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      DEPLOY_STACKNAME: DeepLab
+      DEEPLAB_BUCKETNAME: deeplab-fileshareing
+      AWS_PROFILE: ${AWS_PROFILE}
     entrypoint: /src/scripts/start.sh
+    privileged: true
+    ports:
+      - 5515:5515

@@ -2,6 +2,6 @@
 
 # TODO: change <bucketname>
 
-goofys <bucketname>:.jupyter/ /root/.jupyter/ &
-goofys <bucketname>:dataset/ /dataset/ &
-python3 -m jupyter lab --ip=0.0.0.0 --allow-root
+goofys -f ${DEEPLAB_BUCKETNAME}:.jupyter/ /root/.jupyter/ &
+goofys -f ${DEEPLAB_BUCKETNAME}:dataset/ /dataset/ &
+python3 -m jupyter lab --port 5515 --ip=0.0.0.0 --allow-root
