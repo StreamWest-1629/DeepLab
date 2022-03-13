@@ -1,5 +1,7 @@
 #!/bin/sh
 
+python3 -m pip install -r /src/requirements.txt
+
 printenv GIT_CREDENTIALS > /root/.git-credentials
 git config --global credential.helper "store --file /root/.git-credentials"
 git config --global user.name "${GIT_USERNAME}"
