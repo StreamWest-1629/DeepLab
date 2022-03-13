@@ -4,7 +4,7 @@
 ## Issue作成（各リポジトリごとにうまい具合に設定してください）
 | Project \ Issue | improve | bugfix |
 | :-- | :-: | :-: |
-| [issue and improve][@issue_and_improve] | [Make Issue][improve@issue_and_improve] | [Make Issue][bugfix@issue_and_improve] |
+| [Infra and Libs][@infra_and_libs] | [Make Issue][improve@infra_and_libs] | [Make Issue][bugfix@infra_and_libs] |
 
 ## テンプレートとして使用したらはじめにすること
 1. **readme.mdの修正，やらないと許さない**
@@ -44,8 +44,8 @@
 | `[Issueベース系ブランチ名]/hotfix` | `main` ブランチ以外で修正を行う必要があるときに使用するブランチ．<br/>`123-bugfix/緊急の修正/hotfix` みたいな使い方をする． | 任意のブランチ |
 
 <!-- Issue and Improve project -->
-[@issue_and_improve]:https://github.com/streamwest-1629/deeplab/projects/1 
+[@infra_and_libs]:https://github.com/streamwest-1629/deeplab/projects/1 
 <!-- Make Issue in Issue and Improve project -->
-[improve@issue_and_improve]:https://github.com/streamwest-1629/deeplab/issues/new?labels=enhancement&template=improve.md&title=improve%2F%3C%E6%A9%9F%E8%83%BD%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E8%AA%AC%E6%98%8E%3E&projects=streamwest-1629/deeplab/1
+[improve@infra_and_libs]:https://github.com/streamwest-1629/deeplab/issues/new?labels=enhancement&template=improve.md&title=improve%2F%3C%E6%A9%9F%E8%83%BD%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E8%AA%AC%E6%98%8E%3E&projects=streamwest-1629/deeplab/1
 <!-- Make Issue in Issue and Improve project -->
-[bugfix@issue_and_improve]:https://github.com/streamwest-1629/deeplab/issues/new?labels=bug&template=bugfix.md&title=bugfix%2F%3C%E5%95%8F%E9%A1%8C%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E8%AA%AC%E6%98%8E%3E&projects=streamwest-1629/deeplab/1
+[bugfix@infra_and_libs]:https://github.com/streamwest-1629/deeplab/issues/new?labels=bug&template=bugfix.md&title=bugfix%2F%3C%E5%95%8F%E9%A1%8C%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E8%AA%AC%E6%98%8E%3E&projects=streamwest-1629/deeplab/1
