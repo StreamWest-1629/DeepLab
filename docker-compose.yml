@@ -35,6 +35,9 @@ services:
       AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
       DEEPLAB_BUCKETNAME: deeplab-fileshareing
     entrypoint: /src/scripts/start.sh
+    tmpfs:
+      - /root/.jupyter
+      - /dataset
     privileged: true
     ports:
       - 5515:5515
