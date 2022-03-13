@@ -7,3 +7,10 @@ services:
     volumes:
       - .:/src
     command: /src/scripts/check_version.sh
+  start:
+    build:
+      context: .
+      dockerfile: build.dockerfile
+    volumes:
+      - .:/src
+    entrypoint: /src/scripts/start.sh
