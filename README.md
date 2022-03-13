@@ -6,6 +6,9 @@
 | :-- | :-: | :-: |
 | [Infra and Libs][@infra_and_libs] | [Make Issue][improve@infra_and_libs] | [Make Issue][bugfix@infra_and_libs] |
 
+## git clone時にやること
+**`./after_cloning.sh`を実行してください．** jupyter labのPush時に必要です．
+
 ## `docker compose up` 系デプロイコマンド
 
 | `docker compose up xxx` | 内容 |
