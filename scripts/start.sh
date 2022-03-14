@@ -6,6 +6,7 @@ printenv GIT_CREDENTIALS > /root/.git-credentials
 git config --global credential.helper "store --file /root/.git-credentials"
 git config --global user.name "${GIT_USERNAME}"
 git config --global user.email ${GIT_USERMAIL}
+git config --global include.path "/src/.gitconfig"
 
 cd /src
 goofys -f ${DEEPLAB_BUCKETNAME}:.jupyter/ /root/.jupyter/ &
