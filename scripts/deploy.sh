@@ -3,4 +3,5 @@
 aws cloudformation deploy \
     --template /src/aws/template.yaml \
     --stack-name ${DEPLOY_STACKNAME} \
-    --parameter-overrides BucketName=${DEEPLAB_BUCKETNAME}
+    --parameter-overrides BucketName=${DEEPLAB_BUCKETNAME} \
+    --tags ProjectName=${DEPLOY_PROJECTNAME}

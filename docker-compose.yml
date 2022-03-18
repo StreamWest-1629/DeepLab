@@ -20,6 +20,7 @@ services:
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
       AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
       DEPLOY_STACKNAME: DeepLab
+      DEPLOY_PROJECTNAME: DeepLab
       DEEPLAB_BUCKETNAME: deeplab-fileshareing
     entrypoint: /src/scripts/deploy.sh
   start:
