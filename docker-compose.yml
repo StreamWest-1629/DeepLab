@@ -3,6 +3,7 @@ version: "3.0"
 
 services:
   check_version:
+    container_name: check-version-deeplab
     build:
       context: .
       dockerfile: build.dockerfile
@@ -10,6 +11,7 @@ services:
       - .:/src
     command: /src/scripts/check_version.sh
   deploy:
+    container_name: deploying-aws-resources
     build:
       context: .
       dockerfile: build.dockerfile
@@ -24,6 +26,7 @@ services:
       DEEPLAB_BUCKETNAME: deeplab-fileshareing
     entrypoint: /src/scripts/deploy.sh
   start:
+    container_name: virtual-jupyterlab-machine
     build:
       context: .
       dockerfile: build.dockerfile
