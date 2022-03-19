@@ -13,7 +13,20 @@ Resources:
         BlockPublicPolicy: TRUE
         IgnorePublicAcls: TRUE
         RestrictPublicBuckets: TRUE
-
+      LifecycleConfiguration:
+        Rules:
+          - Id: dataset_transitions
+            Prefix: dataset/
+            Status: Enabled
+            Transitions: 
+              - StorageClass: INTELLIGENT_TIERING
+                TransitionInDays: 1
+          - Id: archive_transitions
+            Prefix: archive/
+            Status: Disabled
+            Transitions:
+              - StorageClass: GLACIER
+                TransitionInDays: 90
 Outputs:
   BucketName:
     Value: !Ref FileSystemBucket
