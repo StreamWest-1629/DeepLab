@@ -6,6 +6,7 @@ printenv GIT_CREDENTIALS > /root/.git-credentials
 git config --global credential.helper "store --file /root/.git-credentials"
 git config --global user.name "${GIT_USERNAME}"
 git config --global user.email ${GIT_USERMAIL}
+python3 -m nbstripout --install --global
 
 goofys -f --cheap \
     --stat-cache-ttl 30m \
