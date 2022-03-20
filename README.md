@@ -16,7 +16,7 @@
 | :-: | :-- |
 | `check_version` | コンテナ内で使用中のモジュールのバージョン情報を確認する |
 | `deploy` | AWS上のリソースを追加・更新する |
-| `start` | Jupyter Labを実行する |
+| `docker-compose -f docker-compose-start.yml up` | Jupyter Labを実行する |
 
 ## テンプレートとして使用したらはじめにすること
 1. **readme.mdの修正，やらないと許さない**

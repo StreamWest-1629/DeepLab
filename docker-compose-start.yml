@@ -1,0 +1,32 @@
+version: "3.0"
+services:
+  start:
+    container_name: virtual-jupyterlab-machine
+    build:
+      context: .
+      dockerfile: build.dockerfile
+    volumes:
+      - .:/src
+      - ~/.aws:/root/.aws
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      DEEPLAB_BUCKETNAME: deeplab-fileshareing
+      GIT_CREDENTIALS: ${GIT_CREDENTIALS}
+      GIT_USERNAME: ${GIT_USERNAME}
+      GIT_USERMAIL: ${GIT_USERMAIL}
+    entrypoint: /src/scripts/start.sh
+    tmpfs:
+      - /root/.jupyter
+      - /dataset
+    privileged: true
+    ports:
+      - 5515:5515
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: ["gpu"]
