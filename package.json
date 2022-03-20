@@ -1,5 +1,0 @@
-{
-    "scripts": {
-        "start": "onchange '\/src\/**\/*.ipynb' -- python3 -m jupytext --set-formats ipynb,py:percent {{file}}"
-    }
-}
