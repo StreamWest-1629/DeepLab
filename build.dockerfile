@@ -39,10 +39,7 @@ RUN \
     #
     # Install goofys from binary
     wget https://github.com/kahing/goofys/releases/download/v${GOOFYS_VERSION}/goofys -P /usr/local/bin/ && \
-    chmod +x /usr/local/bin/goofys && \
-    #
-    # Install npm modules
-    npm --global install onchange@7.1.0
+    chmod +x /usr/local/bin/goofys
 
 RUN \
     # Install jupyter lab
@@ -53,7 +50,6 @@ RUN \
     jupyterlab-lsp \
     jupyterlab_code_formatter \
     ipython-sql bash_kernel \
-    nbstripout \
     yapf isort \
     numpy pandas matplotlib \
     --no-cache-dir && \
