@@ -51,7 +51,7 @@ RUN \
     jupyterlab_code_formatter \
     ipython-sql bash_kernel \
     yapf isort \
-    numpy pandas matplotlib \
+    numpy pandas matplotlib Pillow \
     --no-cache-dir && \
     # Setting jupyter lab configurations
     python3 -m jupyter labextension install --no-build '@krassowski/jupyterlab-lsp@3.9.1' && \
