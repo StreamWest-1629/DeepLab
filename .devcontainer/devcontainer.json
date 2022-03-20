@@ -21,9 +21,7 @@
 	"extensions": [
 		"ms-toolsai.jupyter-renderers",
 		"ms-python.python",
-		"ms-python.vscode-pylance",
-		"eamodio.gitlens",
-		"mhutchie.git-graph"
+		"ms-python.vscode-pylance"
 	]
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
