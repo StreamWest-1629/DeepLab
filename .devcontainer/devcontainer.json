@@ -23,8 +23,7 @@
 		"ms-python.python",
 		"ms-python.vscode-pylance",
 		"eamodio.gitlens",
-		"mhutchie.git-graph",
-		"congyiwu.vscode-jupytext"
+		"mhutchie.git-graph"
 	]
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
