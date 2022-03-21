@@ -24,9 +24,11 @@ import os
 import re
 import sqlite3
 import urllib
+from typing import Iterable
 
 import pandas as pd
 from pandas import DataFrame
+from PIL import Image
 ```
 
 ## データセットディレクトリの確定
@@ -123,8 +125,25 @@ def register_tweet(author_id: str, author_name: str, author_followers: int,
         ])
 ```
 
-### TODO: 特定のツイートの画像データを列挙
+### 特定のツイートの画像データを列挙
 
 ```python
-images
+def enum_tweet_images(image_id: str) -> Iterable[Image]:
+
+    global images
+
+    return [
+        Image.open(filepath) for filepath in images[
+            images["image_id"] == image_id]["filepath"].items()
+    ]
+```
+
+### 特定のユーザーの保存済みのツイートデータを列挙
+
+```python
+def enum_author_tweetids(author_id: str) -> Iterable[str]:
+
+    global tweets
+
+    return tweets[tweets["author_id"] == author_id]["tweet_id"].items()
 ```
