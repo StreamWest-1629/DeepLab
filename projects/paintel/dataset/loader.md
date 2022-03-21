@@ -69,6 +69,15 @@ else:
     images = pd.read_csv(PANDAS_IMAGES)
 ```
 
+### データベースの保存関数の定義
+
+```python
+def save_db():
+    authors.to_csv(PANDAS_AUTHORS)
+    tweets.to_csv(PANDAS_TWEETS)
+    images.to_csv(PANDAS_IMAGES)
+```
+
 ## 関数の定義
 
 

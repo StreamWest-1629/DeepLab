@@ -70,6 +70,16 @@ else:
 
 
 # %% [markdown]
+# ### データベースの保存関数の定義
+
+# %%
+def save_db():
+    authors.to_csv(PANDAS_AUTHORS)
+    tweets.to_csv(PANDAS_TWEETS)
+    images.to_csv(PANDAS_IMAGES)
+
+
+# %% [markdown]
 # ## 関数の定義
 
 # %% [markdown]
