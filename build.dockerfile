@@ -39,22 +39,27 @@ RUN \
     #
     # Install goofys from binary
     wget https://github.com/kahing/goofys/releases/download/v${GOOFYS_VERSION}/goofys -P /usr/local/bin/ && \
-    chmod +x /usr/local/bin/goofys
+    chmod +x /usr/local/bin/goofys && \
+    #
+    # Install kite engine
+    wget https://linux.kite.com/dls/linux/current && \
+    chmod 777 current && \
+    sed -i 's/"--no-launch"//g' current > /dev/null && \
+    ./current --install ./kite-installer
 
 RUN \
     # Install jupyter lab
     python3 -m pip install \
-    jupyterlab \
+    jupyterlab==3.0.14 \
     jupytext \
     jupyterlab-git \
-    jupyterlab-lsp \
+    jupyterlab-kite \
     jupyterlab_code_formatter \
     ipython-sql bash_kernel \
     yapf isort \
     numpy pandas matplotlib Pillow \
     --no-cache-dir && \
     # Setting jupyter lab configurations
-    python3 -m jupyter labextension install --no-build '@krassowski/jupyterlab-lsp@3.9.1' && \
     python3 -m jupyter lab build --dev-build=False && \
     python3 -m bash_kernel.install
 
