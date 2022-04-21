@@ -1,4 +1,3 @@
 *.env
 *.ipynb
 .ipynb_checkpoints
-private
