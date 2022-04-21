@@ -41,7 +41,7 @@ services:
       GIT_CREDENTIALS: ${GIT_CREDENTIALS}
       GIT_USERNAME: ${GIT_USERNAME}
       GIT_USERMAIL: ${GIT_USERMAIL}
-    entrypoint: /src/scripts/start.sh
+    entrypoint: /root/scripts/start.sh
     tmpfs:
       - /root/.jupyter
       - /dataset
