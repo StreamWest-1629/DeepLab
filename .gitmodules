@@ -1,0 +1,4 @@
+[submodule "private-projects"]
+	path = private-projects
+	url = https://github.com/streamwest-1629/DeepLab-private
+	ignore = all
