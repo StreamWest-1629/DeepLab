@@ -45,7 +45,8 @@ RUN \
     wget https://linux.kite.com/dls/linux/current && \
     chmod 777 current && \
     sed -i 's/"--no-launch"//g' current > /dev/null && \
-    ./current --install ./kite-installer
+    ./current --install ./kite-installer && \
+    apt-get clean
 
 RUN \
     --mount=type=cache,target=/root/.cache/pip \

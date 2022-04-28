@@ -22,7 +22,7 @@ jobs:
           tags: |
             type=sha
             type=raw,value=latest
-      - uses: docker/build-push-action
+      - uses: docker/build-push-action@v2
         with:
           context: .
           file: publish.dockerfile
