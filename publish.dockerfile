@@ -63,3 +63,6 @@ RUN \
     python3 -m jupyter lab build --dev-build=False && \
     python3 -m bash_kernel.install && \
     echo ""
+
+RUN apt-get clean && \
+    rm -r /root/.cache/pip
