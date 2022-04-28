@@ -63,4 +63,5 @@ RUN \
     # Setting jupyter lab configurations
     python3 -m jupyter lab build --dev-build=False && \
     python3 -m bash_kernel.install && \
+    echo "" && \
     rm -r /root/.cache/pip
