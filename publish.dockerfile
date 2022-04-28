@@ -45,7 +45,8 @@ RUN \
     wget https://linux.kite.com/dls/linux/current && \
     chmod 777 current && \
     sed -i 's/"--no-launch"//g' current > /dev/null && \
-    ./current --install ./kite-installer
+    ./current --install ./kite-installer && \
+    apt-get clean
 
 RUN \
     --mount=type=cache,target=/root/.cache/pip \
@@ -62,7 +63,4 @@ RUN \
     # Setting jupyter lab configurations
     python3 -m jupyter lab build --dev-build=False && \
     python3 -m bash_kernel.install && \
-    echo ""
-
-RUN apt-get clean && \
     rm -r /root/.cache/pip
