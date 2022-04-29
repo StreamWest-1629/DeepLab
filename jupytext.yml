@@ -1,1 +1,1 @@
-default_jupytext_formats: "ipynb,docs//md:markdown,py:percent"
+default_jupytext_formats: "notebooks//ipynb,docs//md:markdown,py:percent"
