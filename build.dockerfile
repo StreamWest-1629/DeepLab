@@ -1,4 +1,4 @@
-FROM streamwest1629/deeplab:latest
+FROM streamwest1629/deeplab:latest-torch
 
 # Install python libraries
 ADD requirements.txt requirements.txt
