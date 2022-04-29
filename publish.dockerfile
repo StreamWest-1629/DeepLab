@@ -3,6 +3,7 @@ FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
 ARG NODEJS_VERSION=14.x
 ARG GOLANG_VERSION=1.15.8
 ARG GOOFYS_VERSION=0.24.0
+ARG ML_INSTALL_CMD="python3 -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113"
 
 ENV DEBIAN_FRONTEND=nointeractive \
     TZ=Asia/Tokyo \
@@ -64,3 +65,8 @@ RUN \
     python3 -m jupyter lab build --dev-build=False && \
     python3 -m bash_kernel.install && \
     echo ""
+
+RUN \
+    # Install ML Library
+    --mount=type=cache,target=/root/.cache/pip \
+    ${ML_INSTALL_CMD}
