@@ -3,6 +3,7 @@ FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
 ARG NODEJS_VERSION=14.x
 ARG GOLANG_VERSION=1.15.8
 ARG GOOFYS_VERSION=0.24.0
+ARG ML_INSTALL_CMD="python3 -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113"
 
 ENV DEBIAN_FRONTEND=nointeractive \
     TZ=Asia/Tokyo \
@@ -13,6 +14,13 @@ ENV DEBIAN_FRONTEND=nointeractive \
 RUN \
     # Install build modules
     sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list && \
+    # Update nvidia GPG key
+    rm /etc/apt/sources.list.d/cuda.list && \
+    rm /etc/apt/sources.list.d/nvidia-ml.list && \
+    apt-key del 7fa2af80 && \
+    apt-get update && apt-get install -y --no-install-recommends wget && \
+    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb && \
+    dpkg -i cuda-keyring_1.0-1_all.deb && \
     apt-get update && \
     # apt-get upgrade -y && \
     apt-get install -y \
@@ -64,3 +72,8 @@ RUN \
     python3 -m jupyter lab build --dev-build=False && \
     python3 -m bash_kernel.install && \
     echo ""
+
+RUN \
+    # Install ML Library
+    --mount=type=cache,target=/root/.cache/pip \
+    ${ML_INSTALL_CMD}
