@@ -14,7 +14,6 @@ ENV DEBIAN_FRONTEND=nointeractive \
 RUN \
     # Install build modules
     sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list && \
-    apt-get install -y --no-install-recommends wget && \
     apt-key del 7fa2af80 && \
     wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb && \
     dpkg -i cuda-keyring_1.0-1_all.deb && \
