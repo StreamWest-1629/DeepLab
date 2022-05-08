@@ -1,3 +1,5 @@
 *.env
 *.ipynb
 .ipynb_checkpoints
+.terraform
+.terraform.*
