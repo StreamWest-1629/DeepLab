@@ -1,7 +1,12 @@
 #!/bin/sh
 
-aws cloudformation deploy \
-    --template /src/aws/template.yaml \
-    --stack-name ${DEPLOY_STACKNAME} \
-    --parameter-overrides BucketName=${DEEPLAB_BUCKETNAME} \
-    --tags ProjectName=${DEPLOY_PROJECTNAME}
+cd /src/terraform
+terraform init \
+    -backend-config=profile=${AWS_PROFILE} \
+    -backend-config=bucket=${DEEPLAB_BUCKETNAME} \
+    -backend-config=region=${AWS_REGION}
+
+terraform apply \
+    -var AWS_REGION=${AWS_REGION} \
+    -var DEEPLAB_BUCKETNAME=${DEEPLAB_BUCKETNAME} \
+    -var PROJECT_NAME=${PROJECT_NAME}
