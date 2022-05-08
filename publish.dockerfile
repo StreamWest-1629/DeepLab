@@ -16,7 +16,7 @@ RUN \
     sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list && \
     # Update nvidia GPG key
     rm /etc/apt/sources.list.d/cuda.list && \
-    rm /etc/apt/sources.list.d/nvidia-ml.list && \
+    # rm /etc/apt/sources.list.d/nvidia-ml.list && \
     apt-key del 7fa2af80 && \
     apt-get update && apt-get install -y --no-install-recommends wget && \
     wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb && \
@@ -32,6 +32,11 @@ RUN \
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
     ./aws/install && \
+    #
+    # Install Terraform
+    wget https://releases.hashicorp.com/terraform/1.1.7/terraform_1.1.7_linux_amd64.zip && \
+    unzip ./terraform_1.1.7_linux_amd64.zip -d /usr/local/bin/ && \
+    curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash && \
     #
     # Install nodejs
     curl -sL https://deb.nodesource.com/setup_${NODEJS_VERSION} | bash - && \
