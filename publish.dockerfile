@@ -63,24 +63,24 @@ RUN \
     ./current --install ./kite-installer > /dev/null && \
     apt-get clean
 
-# RUN \
-#     --mount=type=cache,target=/root/.cache/pip \
-#     # Install jupyter lab
-#     python3 -m pip install \
-#     jupyterlab==3.0.14 \
-#     jupytext \
-#     jupyterlab-git \
-#     jupyterlab-kite \
-#     jupyterlab_code_formatter \
-#     ipython-sql bash_kernel \
-#     yapf isort \
-#     numpy pandas matplotlib && \
-#     # Setting jupyter lab configurations
-#     python3 -m jupyter lab build --dev-build=False && \
-#     python3 -m bash_kernel.install && \
-#     echo ""
+RUN \
+    --mount=type=cache,target=/root/.cache/pip \
+    # Install jupyter lab
+    python3 -m pip install \
+    jupyterlab==3.0.14 \
+    jupytext \
+    jupyterlab-git \
+    jupyterlab-kite \
+    jupyterlab_code_formatter \
+    ipython-sql bash_kernel \
+    yapf isort \
+    numpy pandas matplotlib && \
+    # Setting jupyter lab configurations
+    python3 -m jupyter lab build --dev-build=False && \
+    python3 -m bash_kernel.install && \
+    echo ""
 
-# RUN \
-#     # Install ML Library
-#     --mount=type=cache,target=/root/.cache/pip \
-#     ${ML_INSTALL_CMD}
+RUN \
+    # Install ML Library
+    --mount=type=cache,target=/root/.cache/pip \
+    ${ML_INSTALL_CMD}
