@@ -61,9 +61,9 @@ RUN \
     # chmod 777 current && \
     # sed -i 's/"--no-launch"//g' current > /dev/null && \
     # ./current --install ./kite-installer > /dev/null && \
-    # apt-get clean
+    apt-get clean
 
-    RUN \
+RUN \
     --mount=type=cache,target=/root/.cache/pip \
     # Install jupyter lab
     python3 -m pip install \
