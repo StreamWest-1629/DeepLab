@@ -67,10 +67,10 @@ RUN \
     --mount=type=cache,target=/root/.cache/pip \
     # Install jupyter lab
     python3 -m pip install \
-    jupyterlab==3.0.14 \
+    jupyterlab==3.1.19 \
+    jupyterlab-lsp \
     jupytext \
     jupyterlab-git \
-    jupyterlab-kite \
     jupyterlab_code_formatter \
     ipython-sql bash_kernel \
     yapf isort \
