@@ -55,15 +55,15 @@ RUN \
     # Install goofys from binary
     wget -q https://github.com/kahing/goofys/releases/download/v${GOOFYS_VERSION}/goofys -P /usr/local/bin/ && \
     chmod +x /usr/local/bin/goofys && \
-    #
-    # Install kite engine
-    wget -q https://linux.kite.com/dls/linux/current && \
-    chmod 777 current && \
-    sed -i 's/"--no-launch"//g' current > /dev/null && \
-    ./current --install ./kite-installer > /dev/null && \
-    apt-get clean
+    # #
+    # # Install kite engine
+    # wget -q https://linux.kite.com/dls/linux/current && \
+    # chmod 777 current && \
+    # sed -i 's/"--no-launch"//g' current > /dev/null && \
+    # ./current --install ./kite-installer > /dev/null && \
+    # apt-get clean
 
-RUN \
+    RUN \
     --mount=type=cache,target=/root/.cache/pip \
     # Install jupyter lab
     python3 -m pip install \
