@@ -1,14 +1,6 @@
 version: "3.0"
 
 services:
-  check_version:
-    container_name: check-version-deeplab
-    build:
-      context: .
-      dockerfile: build.dockerfile
-    volumes:
-      - .:/src
-    command: /src/scripts/check_version.sh
   start:
     container_name: virtual-jupyterlab-machine
     build:
@@ -16,16 +8,14 @@ services:
       dockerfile: build.dockerfile
     volumes:
       - .:/src
+      - ~:/root
       - ~/.aws:/root/.aws
     environment:
       AWS_PROFILE: ${AWS_PROFILE}
       AWS_REGION: ${AWS_REGION}
       DEEPLAB_BUCKETNAME: deeplab-fileshareing
       PROJECT_NAME: DeepLab
-      GIT_CREDENTIALS: ${GIT_CREDENTIALS}
-      GIT_USERNAME: ${GIT_USERNAME}
-      GIT_USERMAIL: ${GIT_USERMAIL}
-    entrypoint: /root/scripts/start.sh
+    entrypoint: /entrypoint/scripts/start.sh
     tmpfs:
       - /root/.jupyter
       - /dataset
