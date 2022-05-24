@@ -2,6 +2,7 @@
 
 python3 -m pip install -r /src/requirements.txt
 
+cat /root/.creds/.git-credentials > /root/.git-credentials
 git config --global credential.helper "store --file /root/.git-credentials"
 
 goofys -f --cheap \
