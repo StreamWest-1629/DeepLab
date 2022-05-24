@@ -8,8 +8,8 @@ services:
       dockerfile: build.dockerfile
     volumes:
       - .:/src
-      - ~/.git-credentials:/root/.creds/.git-credentials
-      - ~/.aws:/root/.aws
+      - ~/.git-credentials:/root/.creds/.git-credentials:ro
+      - ~/.aws:/root/.aws:ro
     environment:
       AWS_PROFILE: ${AWS_PROFILE}
       AWS_REGION: ${AWS_REGION}
