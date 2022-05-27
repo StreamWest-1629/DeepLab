@@ -1,8 +1,22 @@
 version: "3.0"
 
 services:
-  start:
-    container_name: virtual-jupyterlab-machine
+  blanc:
+    container_name: deeplab_blanc
+    image: streamwest1629/deeplab:latest-pytorch
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ "gpu" ]
+    ports:
+      - 3443:5515
+    command: |
+      python3 -m jupyter lab --ContentsManager.allow_hidden=True --port 5515 --ip=0.0.0.0 --allow-root
+  tuned:
+    container_name: deeplab_tuned
     build:
       context: .
       dockerfile: build.dockerfile
@@ -15,6 +29,7 @@ services:
       AWS_REGION: ${AWS_REGION}
       DEEPLAB_BUCKETNAME: deeplab-fileshareing
       PROJECT_NAME: DeepLab
+      KMP_DUPLICATE_LIB_OK: "TRUE"
     entrypoint: /entrypoint/scripts/start.sh
     tmpfs:
       - /root/.jupyter
