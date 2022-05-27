@@ -74,7 +74,7 @@ RUN \
     jupyterlab_code_formatter \
     ipython-sql bash_kernel \
     yapf isort \
-    numpy pandas matplotlib && \
+    numpy pandas matplotlib tqdm && \
     # Setting jupyter lab configurations
     python3 -m jupyter lab build --dev-build=False && \
     python3 -m bash_kernel.install && \
