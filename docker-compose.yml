@@ -3,7 +3,7 @@ version: "3.0"
 services:
   blanc:
     container_name: deeplab_blanc
-    image: streamwest1629/deeplab:latest-pytorch
+    image: streamwest1629/deeplab:latest-torch
     deploy:
       resources:
         reservations:
