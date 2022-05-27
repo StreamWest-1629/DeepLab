@@ -6,8 +6,8 @@ on:
       - stg
 
 jobs:
-  push:
-    name: Push container image to Docker Hub
+  base-push:
+    name: Push base container image to Docker Hub
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,12 +20,36 @@ jobs:
         with:
           images: streamwest1629/deeplab
           tags: |
-            type=sha,suffix=-torch
-            type=raw,value=latest-torch
+            type=sha,suffix=-base
+            type=raw,value=latest-base
       - uses: docker/build-push-action@v2
         with:
-          context: .
-          file: publish.dockerfile
+          context: docker
+          file: base.dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+  pytorch-push:
+    name: Push pytorch container image to Docker Hub
+    needs: base-push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/login-action@v1
+        with:
+          username: streamwest1629
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/metadata-action@v3
+        id: meta
+        with:
+          images: streamwest1629/deeplab
+          tags: |
+            type=sha,suffix=-pytorch
+            type=raw,value=latest-pytorch
+      - uses: docker/build-push-action@v2
+        with:
+          context: docker
+          file: base.dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
