@@ -8,7 +8,8 @@ ENV DEBIAN_FRONTEND=nointeractive \
     TZ=Asia/Tokyo \
     PATH=${PATH}:/usr/local/go/bin \
     GOPATH=/usr/local/go \
-    GO111MODULE=on
+    GO111MODULE=on \
+    SHELL=/bin/bash
 
 RUN \
     # Install build modules
