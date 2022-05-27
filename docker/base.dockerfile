@@ -67,7 +67,7 @@ RUN \
     # Install jupyter lab
     python3 -m pip install \
     jupyterlab==3.1.19 \
-    jupyterlab-lsp \
+    jupyterlab-lsp jedi-language-server \
     jupytext \
     jupyterlab-git \
     jupyterlab_code_formatter \
