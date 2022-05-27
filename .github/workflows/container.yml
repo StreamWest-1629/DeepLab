@@ -24,8 +24,8 @@ jobs:
             type=raw,value=latest-base
       - uses: docker/build-push-action@v2
         with:
-          context: docker
-          file: base.dockerfile
+          context: .
+          file: ./docker/base.dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -44,12 +44,12 @@ jobs:
         with:
           images: streamwest1629/deeplab
           tags: |
-            type=sha,suffix=-pytorch
-            type=raw,value=latest-pytorch
+            type=sha,suffix=-torch
+            type=raw,value=latest-torch
       - uses: docker/build-push-action@v2
         with:
-          context: docker
-          file: base.dockerfile
+          context: .
+          file: ./docker/pytorch.dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
