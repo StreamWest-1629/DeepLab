@@ -46,19 +46,5 @@ services:
               capabilities: [ "gpu" ]
     ports:
       - 3443:5515
-#   https:
-#     image: steveltn/https-portal:1
-#     ports:
-#       - 3443:443
-#     environment:
-#       STAGE: local
-#       DOMAINS: 'localhost.com -> http://start:5515'
-#     links:
-#       - start
-#     volumes:
-#       - https-portal-data:/var/lib/https-portal
-#       - /var/run/docker.sock:/var/run/docker.sock:ro
-# volumes:
-#   https-portal-data:
 volumes:
   external-dataset:
