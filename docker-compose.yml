@@ -24,6 +24,7 @@ services:
       - .:/src
       - ~/.git-credentials:/root/.creds/.git-credentials:ro
       - ~/.aws:/root/.aws:ro
+      - external-dataset:/local/dataset
     environment:
       AWS_PROFILE: ${AWS_PROFILE}
       AWS_REGION: ${AWS_REGION}
@@ -34,6 +35,7 @@ services:
     tmpfs:
       - /root/.jupyter
       - /dataset
+      - /tmp
     privileged: true
     deploy:
       resources:
@@ -58,3 +60,5 @@ services:
 #       - /var/run/docker.sock:/var/run/docker.sock:ro
 # volumes:
 #   https-portal-data:
+volumes:
+  external-dataset:
