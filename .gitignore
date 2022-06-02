@@ -3,4 +3,5 @@
 .ipynb_checkpoints
 .terraform
 .terraform.*
+./temp-projects
 key
