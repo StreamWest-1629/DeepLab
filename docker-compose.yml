@@ -47,7 +47,7 @@ services:
               capabilities: [ "gpu" ]
     ports:
       - 3443:5515
-    user: 1000:1000
+    # user: 1000:1000
 #   https:
 #     image: steveltn/https-portal:1
 #     ports:
