@@ -15,6 +15,7 @@ services:
       - 3443:5515
     command: |
       python3 -m jupyter lab --ContentsManager.allow_hidden=True --port 5515 --ip=0.0.0.0 --allow-root
+    user: 1000:1000
   tuned:
     container_name: deeplab_tuned
     build:
@@ -46,6 +47,7 @@ services:
               capabilities: [ "gpu" ]
     ports:
       - 3443:5515
+    user: 1000:1000
 #   https:
 #     image: steveltn/https-portal:1
 #     ports:
